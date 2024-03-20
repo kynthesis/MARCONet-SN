@@ -1,2 +1,4 @@
 Train/*.eggs
 Train/*.egg-info
+Train/TrainData
+**/__pycache__
