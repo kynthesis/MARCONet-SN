@@ -22,7 +22,7 @@ import math
 from torch.nn import functional as F
 from util.diffjpeg import DiffJPEG
 from scipy import special
-from torchvision.transforms.functional_tensor import rgb_to_grayscale
+from torchvision.transforms.functional import rgb_to_grayscale
 np.seterr(invalid='ignore')
 
 
@@ -706,7 +706,7 @@ def fspecial_gaussian(hsize, sigma):
     [x, y] = np.meshgrid(np.arange(-siz[1], siz[1]+1), np.arange(-siz[0], siz[0]+1))
     arg = -(x*x + y*y)/(2*std*std)
     h = np.exp(arg)
-    h[h < scipy.finfo(float).eps * h.max()] = 0
+    h[h < np.finfo(float).eps * h.max()] = 0
     sumh = h.sum()
     if sumh != 0:
         h = h/sumh
